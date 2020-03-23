@@ -34,7 +34,7 @@ export default class Index extends Component {
       .callFunction({
         name: 'todoList',
         data: {
-          funcName: dbMethodName.addItem,
+          funcName: dbMethodName.getItemsById,
         }
       })
       .then(res => {
