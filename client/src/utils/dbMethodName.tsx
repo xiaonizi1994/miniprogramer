@@ -1,3 +1,4 @@
 export const dbMethodName = {
-  getItemsById: 'getItemsById'
+  getItemsById: 'getItemsById',
+  addItem: 'addItem'
 }
