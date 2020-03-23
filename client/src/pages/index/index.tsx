@@ -2,6 +2,7 @@ import Taro, { Component, Config } from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import './index.scss'
 import Login from "../../components/login/index.weapp";
+import TodoList from "../../components/todoList/todoList";
 
 
 export default class Index extends Component {
@@ -31,6 +32,7 @@ export default class Index extends Component {
     return (
       <View className='index'>
         <Login/>
+        <TodoList/>
       </View>
     )
   }
