@@ -22,7 +22,7 @@ export default class TodoList extends Component {
   getLogin = () => {
     Taro.cloud
       .callFunction({
-        name: "login",
+        name: "todoList",
         data: {}
       })
       .then(res => {

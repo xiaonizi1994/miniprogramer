@@ -3,6 +3,7 @@ import { View } from '@tarojs/components'
 import './index.scss'
 import Login from "../../components/login/index.weapp";
 import TodoList from "../../components/todoList/todoList";
+import {dbMethodName} from "../../utils/dbMethodName";
 
 
 export default class Index extends Component {
@@ -28,7 +29,21 @@ export default class Index extends Component {
 
   componentDidHide () { }
 
+  getItems = () => {
+    Taro.cloud
+      .callFunction({
+        name: 'todoList',
+        data: {
+          funcName: dbMethodName.getItemsById,
+        }
+      })
+      .then(res => {
+        console.log('res', res);
+      })
+  }
+
   render () {
+    this.getItems();
     return (
       <View className='index'>
         <Login/>
