@@ -27,6 +27,9 @@ const funcMap = {
 
 function getItemsByUserId() {
     return todoItemsDB
+        .where({
+            openId: wxContext.openid
+        })
         .get()
         .then(res => res)
 }
@@ -44,7 +47,8 @@ function addItem() {
                     "database"
                 ],
                 location: new db.Geo.Point(113, 23),
-                done: false
+                done: false,
+                openId: wxContext.openid
             }
         })
         .then(res => res)
