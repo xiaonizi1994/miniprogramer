@@ -1,4 +1,4 @@
-.container{
+.container {
   display: flex;
   height: 70px;
   padding: 30px;
@@ -9,11 +9,14 @@
 .input {
   display: block;
   height: 100%;
-  border:1PX solid #d6e4ef;
+  border: 1PX solid #d6e4ef;
   padding: 10px 25px;
   width: 70%;
   border-radius: 20px;
+}
 
+.warning {
+  border: 1PX solid red;
 }
 
 .button {

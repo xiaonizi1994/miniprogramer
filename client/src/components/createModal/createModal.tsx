@@ -1,6 +1,6 @@
 import Taro, {Component} from "@tarojs/taro"
 import {Button} from "@tarojs/components"
-import {AtModal, AtModalAction, AtModalContent, AtModalHeader} from "taro-ui";
+import {AtModal, AtModalAction, AtModalContent, AtModalHeader, AtTextarea} from "taro-ui";
 import {dbMethodName} from "../../utils/dbMethodName";
 import {emitter, EVENT_TYPE} from '../../utils/events';
 
@@ -22,15 +22,18 @@ export default class CreateModal extends Component {
   }
 
   componentDidMount() {
-    this.eventEmitter = emitter.addListener(EVENT_TYPE.shouldShowCreatModal, (isOpened) => {
+    this.eventEmitter = emitter.addListener(EVENT_TYPE.showCreatModal,  (title) => {
       this.setState({
-        isOpened,
+        isOpened: true,
+        form: {
+          title
+        }
       });
     });
   }
 
   componentWillUnmount() {
-    emitter.removeListener(EVENT_TYPE.shouldShowCreatModal, this.eventEmitter);
+    emitter.removeListener(EVENT_TYPE.showCreatModal, this.eventEmitter);
   }
 
   componentDidShow() {
@@ -58,20 +61,39 @@ export default class CreateModal extends Component {
       .then(res => {
         console.log('res', res)
       })
+  };
+
+  handleTextChange = (value)=>{
+    this.setState({
+      form :{
+        ...this.state.form,
+        detail: value,
+      }
+    })
+  }
+
+  cleanForm = () => {
+    this.setState({
+      form: {
+        title: null,
+        detail: null,
+      }
+    })
   }
 
   render() {
-    const {isOpened} = this.state;
+    const {isOpened, form} = this.state;
 
-    console.log('state', this.props);
-    console.log('iospe', isOpened);
     return (
       <AtModal isOpened={isOpened}>
-        <AtModalHeader>标题</AtModalHeader>
+        <AtModalHeader>{form.title}</AtModalHeader>
         <AtModalContent>
-          这里是正文内容，欢迎加入京东凹凸实验室
-          这里是正文内容，欢迎加入京东凹凸实验室
-          这里是正文内容，欢迎加入京东凹凸实验室
+          <AtTextarea
+            value={form.value}
+            onChange={this.handleTextChange.bind(this)}
+            maxLength={200}
+            placeholder='请输入待办事项详情'
+          />
         </AtModalContent>
         <AtModalAction>
           <Button onClick={this.handleCancelClick}>取消</Button>
