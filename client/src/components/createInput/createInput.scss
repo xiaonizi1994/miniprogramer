@@ -1,0 +1,25 @@
+.container{
+  display: flex;
+  height: 70px;
+  padding: 30px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.input {
+  display: block;
+  height: 100%;
+  border:1PX solid #d6e4ef;
+  padding: 10px 25px;
+  width: 70%;
+  border-radius: 20px;
+
+}
+
+.button {
+  flex: 1;
+  margin-left: 30px;
+  height: 81px;
+  line-height: 81px;
+  font-size: 16Px;
+}

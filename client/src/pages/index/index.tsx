@@ -4,6 +4,7 @@ import './index.scss'
 import Login from "../../components/login/index.weapp";
 import TodoList from "../../components/todoList/todoList";
 import {dbMethodName} from "../../utils/dbMethodName";
+import CreateInput from "../../components/createInput/createInput";
 
 
 export default class Index extends Component {
@@ -46,6 +47,7 @@ export default class Index extends Component {
     this.getItems();
     return (
       <View className='index'>
+        <CreateInput/>
         <Login/>
         <TodoList/>
       </View>

@@ -1,1 +1,9 @@
-@import "../../components/todoList/todoList";
+html, body, button {
+  margin: 0;
+  padding: 0;
+}
+
+@import "~taro-ui/dist/style/components/list.scss";
+@import "~taro-ui/dist/style/components/icon.scss";
+@import "~taro-ui/dist/style/components/button.scss";
+
