@@ -3,10 +3,12 @@ import {View, Input, Button} from "@tarojs/components"
 
 
 import './createInput.scss'
+import {emitter, EVENT_TYPE} from "../../utils/events";
 
 export default class CreateInput extends Component {
   state = {
-    context: {}
+    title: {},
+    isOpened: false,
   }
 
   componentWillMount() {
@@ -37,11 +39,23 @@ export default class CreateInput extends Component {
       })
   }
 
+  handleInputBlur = (event) => {
+    const {detail} = event;
+    this.setState({
+      title: detail.value
+    })
+    console.log('tilte', detail.value);
+  }
+
+  handleCreatBtnClick = () => {
+    emitter.emit(EVENT_TYPE.shouldShowCreatModal, true);
+  }
+
   render() {
     return (
       <View className='container'>
-        <Input className='input' type='text' placeholder='最大输入长度为 10'/>
-        <Button className='button' type='primary'>创建</Button>
+        <Input className='input' type='text' placeholder='请输入代办事项的标题' onBlur={this.handleInputBlur}/>
+        <Button className='button' type='primary' onClick={this.handleCreatBtnClick}>创建</Button>
       </View>
     )
   }

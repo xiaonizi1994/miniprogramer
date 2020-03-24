@@ -16,8 +16,8 @@ const wxContext = {
 
 // 云函数入口函数
 exports.main = async (data, context) => {
-    const {funcName} = data;
-    return funcMap[funcName]()
+    const {funcName, args} = data;
+    return funcMap[funcName](args)
 }
 
 const funcMap = {
@@ -35,20 +35,12 @@ function getItemsByUserId() {
 }
 
 
-function addItem() {
+function addItem(args) {
     return todoItemsDB
         .add({
             // data 字段表示需新增的 JSON 数据
             data: {
-                description: "learn cloud database",
-                due: new Date("2018-09-02"),
-                tags: [
-                    "cloud",
-                    "database"
-                ],
-                location: new db.Geo.Point(113, 23),
-                done: false,
-                openId: wxContext.openid
+                ...args
             }
         })
         .then(res => res)

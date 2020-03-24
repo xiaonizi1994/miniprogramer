@@ -5,6 +5,7 @@ import Login from "../../components/login/index.weapp";
 import TodoList from "../../components/todoList/todoList";
 import {dbMethodName} from "../../utils/dbMethodName";
 import CreateInput from "../../components/createInput/createInput";
+import CreateModal from "../../components/createModal/createModal";
 
 
 export default class Index extends Component {
@@ -50,6 +51,7 @@ export default class Index extends Component {
         <CreateInput/>
         <Login/>
         <TodoList/>
+        <CreateModal/>
       </View>
     )
   }
