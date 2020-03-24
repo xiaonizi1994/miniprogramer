@@ -1,45 +1,52 @@
-
-import Taro, { Component } from "@tarojs/taro"
+import Taro, {Component} from "@tarojs/taro"
 import {AtList, AtListItem} from "taro-ui";
+import {dbMethodName} from "../../utils/dbMethodName";
 
 
 export default class TodoList extends Component {
   state = {
-    title: 'title',
-    context: {}
+    todoList: [],
   }
 
-  componentWillMount() {}
+  componentWillMount() {
+  }
 
-  componentDidMount() {}
+  componentDidMount() {
+    this.getTodoList();
+  }
 
-  componentWillUnmount() {}
+  componentWillUnmount() {
+  }
 
-  componentDidShow() {}
+  componentDidShow() {
+  }
 
-  componentDidHide() {}
+  componentDidHide() {
+  }
 
-  getLogin = () => {
+  getTodoList = () => {
     Taro.cloud
       .callFunction({
-        name: "todoList",
-        data: {}
+        name: 'todoList',
+        data: {
+          funcName: dbMethodName.getItemsById,
+        }
       })
       .then(res => {
         this.setState({
-          context: res.result
+          todoList: res.result.data,
         })
+        console.log('res', res);
       })
   }
 
   render() {
-    const {title} = this.state;
+    const {todoList} = this.state;
     return (
       <AtList>
-        <AtListItem title={title}/>
-        <AtListItem title='标题文字' arrow='right' />
-        <AtListItem title='标题文字' extraText='详细信息' />
-        <AtListItem title='禁用状态' disabled extraText='详细信息' />
+        {todoList.map(item => (
+          <AtListItem title={item.title} arrow='right'/>
+        ))}
       </AtList>
     )
   }

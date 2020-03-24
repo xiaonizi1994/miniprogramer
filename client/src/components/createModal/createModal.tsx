@@ -12,7 +12,8 @@ export default class CreateModal extends Component {
     super(props);
     this.state = {
       form: {
-        title: props.title
+        title: props.title,
+        detail: '',
       },
       isOpened: false,
     }
@@ -22,7 +23,7 @@ export default class CreateModal extends Component {
   }
 
   componentDidMount() {
-    this.eventEmitter = emitter.addListener(EVENT_TYPE.showCreatModal,  (title) => {
+    this.eventEmitter = emitter.addListener(EVENT_TYPE.showCreatModal, (title) => {
       this.setState({
         isOpened: true,
         form: {
@@ -45,7 +46,8 @@ export default class CreateModal extends Component {
   handleCancelClick = () => {
     this.setState({
       isOpened: false,
-    })
+    });
+    this.cleanForm();
   }
 
   handleConfirmClick = () => {
@@ -59,13 +61,17 @@ export default class CreateModal extends Component {
         }
       })
       .then(res => {
+        this.cleanForm();
         console.log('res', res)
-      })
+      });
+    this.setState({
+      isOpened: false
+    });
   };
 
-  handleTextChange = (value)=>{
+  handleTextChange = (value) => {
     this.setState({
-      form :{
+      form: {
         ...this.state.form,
         detail: value,
       }
@@ -89,7 +95,7 @@ export default class CreateModal extends Component {
         <AtModalHeader>{form.title}</AtModalHeader>
         <AtModalContent>
           <AtTextarea
-            value={form.value}
+            value={form.detail}
             onChange={this.handleTextChange.bind(this)}
             maxLength={200}
             placeholder='请输入待办事项详情'
