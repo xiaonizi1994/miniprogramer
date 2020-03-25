@@ -8,6 +8,10 @@ export default class CreateModal extends Component {
 
   eventEmitter;
 
+  static defaultProps = {
+    confirmClick: () => {}
+  }
+
   constructor(props) {
     super(props);
     this.state = {
@@ -52,6 +56,7 @@ export default class CreateModal extends Component {
 
   handleConfirmClick = () => {
     const {form} = this.state;
+    const {confirmClick} = this.props;
     Taro.cloud
       .callFunction({
         name: "todoList",
@@ -61,6 +66,7 @@ export default class CreateModal extends Component {
         }
       })
       .then(res => {
+        confirmClick();
         this.cleanForm();
         console.log('res', res)
       });

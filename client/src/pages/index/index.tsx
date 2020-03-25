@@ -1,10 +1,10 @@
-import Taro, { Component, Config } from '@tarojs/taro'
-import { View } from '@tarojs/components'
+import Taro, {Component, Config} from '@tarojs/taro'
+import {View} from '@tarojs/components'
 import './index.scss'
-import Login from "../../components/login/index.weapp";
 import TodoList from "../../components/todoList/todoList";
 import CreateInput from "../../components/createInput/createInput";
 import CreateModal from "../../components/createModal/createModal";
+import {dbMethodName} from "../../utils/dbMethodName";
 
 
 export default class Index extends Component {
@@ -18,26 +18,51 @@ export default class Index extends Component {
    */
   config: Config = {
     navigationBarTitleText: '首页'
+  };
+
+  state = {
+    todoList: []
   }
 
-  componentWillMount () { }
+  componentWillMount() {
+  }
 
-  componentDidMount () { }
+  componentDidMount() {
+    this.fetchTodoList();
+  }
 
-  componentWillUnmount () { }
+  componentWillUnmount() {
+  }
 
-  componentDidShow () { }
+  componentDidShow() {
+  }
 
-  componentDidHide () { }
+  componentDidHide() {
+  }
 
+  fetchTodoList = () => {
+    Taro.cloud
+      .callFunction({
+        name: 'todoList',
+        data: {
+          funcName: dbMethodName.getItemsById,
+        }
+      })
+      .then(res => {
+        this.setState({
+          todoList: res.result.data,
+        })
+        console.log('res', res);
+      })
+  }
 
-  render () {
+  render() {
+    const {todoList} = this.state;
     return (
       <View className='index'>
         <CreateInput/>
-        <Login/>
-        <TodoList/>
-        <CreateModal/>
+        <TodoList todoList={todoList}/>
+        <CreateModal confirmClick={this.fetchTodoList}/>
       </View>
     )
   }

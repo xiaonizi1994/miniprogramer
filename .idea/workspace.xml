@@ -2,10 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1fc1806b-7e13-408c-864e-6c0a7602c46e" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/createModal/createModal.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/createModal/createModal.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/components/todoList/todoList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/todoList/todoList.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/client/src/pages/index/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/index/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cloud/functions/todoList/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/cloud/functions/todoList/index.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -15,11 +15,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/client/src/pages/index/index.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-212">
-              <caret line="5" column="40" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
+            <state relative-caret-position="281">
+              <caret line="59" column="34" lean-forward="true" selection-start-line="59" selection-start-column="34" selection-end-line="59" selection-end-column="34" />
+              <folding>
+                <element signature="e#0#54#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -27,8 +30,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/src/components/todoList/todoList.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
-              <caret line="41" selection-start-line="41" selection-end-line="41" />
+            <state relative-caret-position="-104">
+              <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
               <folding>
                 <element signature="e#0#44#0" expanded="true" />
               </folding>
@@ -36,11 +39,14 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/cloud/functions/todoList/index.js">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/src/components/createModal/createModal.tsx">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="220">
-              <caret line="28" column="21" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
+            <state relative-caret-position="187">
+              <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+              <folding>
+                <element signature="e#0#44#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -81,6 +87,7 @@
       <find>init</find>
       <find>length</find>
       <find>leng</find>
+      <find>getTodoList</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -109,16 +116,18 @@
         <option value="$PROJECT_DIR$/client/src/components/createInput/createInput.scss" />
         <option value="$PROJECT_DIR$/client/src/utils/events.tsx" />
         <option value="$PROJECT_DIR$/client/src/components/createInput/createInput.tsx" />
+        <option value="$PROJECT_DIR$/cloud/functions/todoList/index.js" />
+        <option value="$PROJECT_DIR$/client/src/components/todoList/todoList.tsx" />
         <option value="$PROJECT_DIR$/client/src/components/createModal/createModal.tsx" />
         <option value="$PROJECT_DIR$/client/src/pages/index/index.tsx" />
-        <option value="$PROJECT_DIR$/client/src/components/todoList/todoList.tsx" />
-        <option value="$PROJECT_DIR$/cloud/functions/todoList/index.js" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds" fullScreen="true">
-    <option name="width" value="1440" />
-    <option name="height" value="900" />
+    <option name="x" value="40" />
+    <option name="y" value="23" />
+    <option name="width" value="1400" />
+    <option name="height" value="789" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -126,7 +135,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
@@ -346,12 +354,13 @@
           <select />
         </subPane>
       </pane>
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1585039727883" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1585059541301" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -392,18 +401,19 @@
       <workItem from="1584941639573" duration="3455000" />
       <workItem from="1584945318396" duration="23000" />
       <workItem from="1584945468495" duration="16409000" />
-      <workItem from="1585024671879" duration="9477000" />
+      <workItem from="1585024671879" duration="9693000" />
+      <workItem from="1585059879340" duration="1267000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="30459000" />
+    <option name="totallyTimeSpent" value="31942000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2639485" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.26752505" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
@@ -622,13 +632,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/utils/event.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="31" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/utils/event.tsx" />
     <entry file="file://$PROJECT_DIR$/client/node_modules/@types/node/events.d.ts">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -712,30 +716,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/createModal/createModal.tsx">
+    <entry file="file://$PROJECT_DIR$/cloud/functions/todoList/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-462">
-          <caret line="49" column="21" lean-forward="true" selection-start-line="49" selection-start-column="21" selection-end-line="49" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#44#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/components/todoList/todoList.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="41" selection-start-line="41" selection-end-line="41" />
-          <folding>
-            <element signature="e#0#44#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/src/pages/index/index.tsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-212">
-          <caret line="5" column="40" selection-start-line="5" selection-start-column="40" selection-end-line="5" selection-end-column="40" />
+        <state relative-caret-position="391">
+          <caret line="39" column="34" selection-start-line="39" selection-start-column="34" selection-end-line="39" selection-end-column="34" />
         </state>
       </provider>
     </entry>
@@ -746,10 +730,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/cloud/functions/todoList/index.js">
+    <entry file="file://$PROJECT_DIR$/client/src/components/createModal/createModal.tsx">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="28" column="21" selection-start-line="28" selection-start-column="21" selection-end-line="28" selection-end-column="21" />
+        <state relative-caret-position="187">
+          <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/components/todoList/todoList.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-104">
+          <caret line="4" column="21" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#44#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/src/pages/index/index.tsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="59" column="34" lean-forward="true" selection-start-line="59" selection-start-column="34" selection-end-line="59" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#54#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
