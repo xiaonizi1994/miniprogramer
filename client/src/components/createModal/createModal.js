@@ -4,23 +4,23 @@ import {AtModal, AtModalAction, AtModalContent, AtModalHeader, AtTextarea} from 
 import {dbMethodName} from "../../utils/dbMethodName";
 import {emitter, EVENT_TYPE} from '../../utils/events';
 import {connect} from "@tarojs/redux";
-import {add, fetchAll, update} from "../../store/actions/todoList";
+import {fetchAll} from "../../store/actions/todoList";
+import {setLoading} from "../../store/actions/loadding";
 
 
 @connect(({ todoList }) => ({
   todoList
 }), (dispatch) => ({
   fetchAll () {
-    dispatch(fetchAll())
+    return dispatch(fetchAll())
   },
+  setLoading(isLoading) {
+    dispatch(setLoading(isLoading))
+  }
 }))
 export default class CreateModal extends Component {
 
   eventEmitter;
-
-  static defaultProps = {
-    confirmClick: () => {}
-  }
 
   constructor(props) {
     super(props);
@@ -66,7 +66,8 @@ export default class CreateModal extends Component {
 
   handleConfirmClick = () => {
     const {form} = this.state;
-    const {confirmClick} = this.props;
+    const {setLoading} = this.props;
+    setLoading(true);
     Taro.cloud
       .callFunction({
         name: "todoList",
@@ -75,9 +76,9 @@ export default class CreateModal extends Component {
           args: form,
         }
       })
-      .then(res => {
+      .then(() => {
         this.cleanForm();
-        this.props.fetchAll();
+        this.props.fetchAll().then(()=>{setLoading(false)});
       });
     this.setState({
       isOpened: false
@@ -106,7 +107,7 @@ export default class CreateModal extends Component {
     const {isOpened, form} = this.state;
 
     return (
-      <AtModal isOpened={isOpened}>
+      isOpened && <AtModal isOpened={isOpened}>
         <AtModalHeader>{form.title}</AtModalHeader>
         <AtModalContent>
           <AtTextarea

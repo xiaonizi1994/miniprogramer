@@ -8,15 +8,19 @@ import {dbMethodName} from "../../utils/dbMethodName";
 import {connect} from "@tarojs/redux";
 import {clean} from "../../store/actions/selectIds";
 import {fetchAll} from "../../store/actions/todoList";
+import {setLoading} from "../../store/actions/loadding";
 
-@connect(({ selectedIds }) => ({
+@connect(({selectedIds}) => ({
   selectedIds,
 }), (dispatch) => ({
   cleanSelectedIds() {
     dispatch(clean())
   }
   fetchAll() {
-    dispatch(fetchAll())
+    return dispatch(fetchAll())
+  },
+  setLoading(isLoading) {
+    dispatch(setLoading(isLoading))
   }
 }))
 
@@ -48,8 +52,9 @@ export default class Index extends Component {
   componentDidHide() {
   }
 
-  handleFinishClick = ()=>{
-    const {selectedIds, cleanSelectedIds, fetchAll} = this.props;
+  handleFinishClick = () => {
+    const {selectedIds, cleanSelectedIds, fetchAll, setLoading} = this.props;
+    setLoading(true);
     Taro.cloud
       .callFunction({
         name: 'todoList',
@@ -60,12 +65,14 @@ export default class Index extends Component {
       })
       .then(() => {
         cleanSelectedIds();
-        fetchAll();
+        fetchAll().then(()=>setLoading(false));
       })
+
   }
 
   handleDelClick = () => {
-    const {selectedIds, cleanSelectedIds, fetchAll} = this.props;
+    const {selectedIds, cleanSelectedIds, fetchAll, setLoading} = this.props;
+    setLoading(true);
     Taro.cloud
       .callFunction({
         name: 'todoList',
@@ -76,7 +83,7 @@ export default class Index extends Component {
       })
       .then(() => {
         cleanSelectedIds();
-        fetchAll();
+        fetchAll().then(()=>setLoading(false));
       })
   }
 

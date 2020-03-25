@@ -1,14 +1,15 @@
 import Taro, {Component} from "@tarojs/taro"
-import {AtList} from "taro-ui";
+import {AtList, AtActivityIndicator} from "taro-ui";
 import TodoItem from "../todoItem/TodoItem";
 import {ScrollView} from "@tarojs/components";
 import {connect} from "@tarojs/redux";
 import {add, fetchAll, update} from "../../store/actions/todoList";
 import './TodoList.scss'
 
-@connect(({todoList, selectedIds}) => ({
+@connect(({todoList, selectedIds, loading}) => ({
   todoList,
-  selectedIds
+  selectedIds,
+  loading
 }), (dispatch) => ({
   add(item) {
     dispatch(add(item))
@@ -40,9 +41,10 @@ export default class TodoList extends Component {
   }
 
   render() {
-    const {todoList, selectedIds} = this.props;
+    const {todoList, loading} = this.props;
     return (
       <ScrollView className='scroller' scrollY>
+        {loading && <AtActivityIndicator mode='center' size={64}></AtActivityIndicator>}
         <AtList>
           {todoList && todoList.map(item => (
             <TodoItem item={item}/>

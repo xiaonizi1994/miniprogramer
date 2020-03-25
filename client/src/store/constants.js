@@ -7,3 +7,5 @@ export const DEL = 'DEL'
 
 export const TOGGLE = 'TOGGLE'
 export const CLEAN = 'CLEAN'
+
+export const SET_LOADING = 'SET_LOADING'
