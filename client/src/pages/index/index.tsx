@@ -1,5 +1,5 @@
 import Taro, {Component, Config} from '@tarojs/taro'
-import {Button, View} from '@tarojs/components'
+import {Button, Switch, View} from '@tarojs/components'
 import './index.scss'
 import TodoList from "../../components/todoList/todoList";
 import CreateInput from "../../components/createInput/createInput";

@@ -19,6 +19,7 @@ const funcMap = {
     ['getItemsById']: getItemsByUserId,
     ['addItem']: addItem,
     ['batchDelete']: batchDelete,
+    ['batchFinish']: batchFinish,
 }
 
 function getItemsByUserId(args, wxContext) {
@@ -47,12 +48,19 @@ function addItem(args, wxContext) {
         .catch(res => res)
 }
 
+function batchFinish(args, wxContext) {
+    const _ = db.command;
+    return todoItemsDB.where({
+        openId: wxContext.OPENID,
+        _id: _.in(args)
+    }).update({
+        data: {done: true}
+    }).then(res => res)
+        .catch(res => res)
+
+}
+
 function batchDelete(args, wxContext) {
-    const log = cloud.logger()
-    log.info({
-        name: 'dlelt',
-        id: args,
-    })
     const _ = db.command;
     return todoItemsDB.where({
         openId: wxContext.OPENID,

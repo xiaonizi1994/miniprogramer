@@ -55,7 +55,6 @@ export default class TodoItem extends Component {
         </View>
         <View className='block'>
           <View>{this.getStatus(item)}</View>
-          <Switch className='switch' checked={item.done}/>
           <AtIcon value='chevron-right' size='25' color='#ccc'></AtIcon>
         </View>
       </View>
