@@ -8,15 +8,11 @@ import {fetchAll} from "../../store/actions/todoList";
 import {setLoading} from "../../store/actions/loadding";
 
 
-@connect(({ todoList }) => ({
+@connect(({todoList}) => ({
   todoList
 }), (dispatch) => ({
-  fetchAll () {
-    return dispatch(fetchAll())
-  },
-  setLoading(isLoading) {
-    dispatch(setLoading(isLoading))
-  }
+  fetchAll: () => dispatch(fetchAll()),
+  setLoading: (isLoading) => dispatch(setLoading(isLoading))
 }))
 export default class CreateModal extends Component {
 
@@ -78,7 +74,9 @@ export default class CreateModal extends Component {
       })
       .then(() => {
         this.cleanForm();
-        this.props.fetchAll().then(()=>{setLoading(false)});
+        this.props.fetchAll().then(() => {
+          setLoading(false)
+        });
       });
     this.setState({
       isOpened: false

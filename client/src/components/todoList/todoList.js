@@ -11,15 +11,9 @@ import './TodoList.scss'
   selectedIds,
   loading
 }), (dispatch) => ({
-  add(item) {
-    dispatch(add(item))
-  },
-  fetchAll() {
-    dispatch(fetchAll())
-  },
-  update(item) {
-    dispatch(update(item))
-  }
+  add: (item) => dispatch(add(item)),
+  fetchAll: () => dispatch(fetchAll()),
+  update: (item) => dispatch(update(item))
 }))
 
 export default class TodoList extends Component {

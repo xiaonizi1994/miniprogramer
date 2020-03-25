@@ -13,15 +13,9 @@ import {setLoading} from "../../store/actions/loadding";
 @connect(({selectedIds}) => ({
   selectedIds,
 }), (dispatch) => ({
-  cleanSelectedIds() {
-    dispatch(clean())
-  }
-  fetchAll() {
-    return dispatch(fetchAll())
-  },
-  setLoading(isLoading) {
-    dispatch(setLoading(isLoading))
-  }
+  cleanSelectedIds: () => dispatch(clean()),
+  fetchAll: () => dispatch(fetchAll()),
+  setLoading: (isLoading) => dispatch(setLoading(isLoading))
 }))
 
 export default class Index extends Component {
@@ -65,7 +59,7 @@ export default class Index extends Component {
       })
       .then(() => {
         cleanSelectedIds();
-        fetchAll().then(()=>setLoading(false));
+        fetchAll().then(() => setLoading(false));
       })
 
   }
@@ -83,7 +77,7 @@ export default class Index extends Component {
       })
       .then(() => {
         cleanSelectedIds();
-        fetchAll().then(()=>setLoading(false));
+        fetchAll().then(() => setLoading(false));
       })
   }
 

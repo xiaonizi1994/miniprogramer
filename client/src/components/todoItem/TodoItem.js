@@ -9,9 +9,8 @@ import {toggle} from "../../store/actions/selectIds";
 @connect(({selectedIds}) => ({
   selectedIds,
 }), (dispatch) => ({
-  toggle(id) {
-    dispatch(toggle(id))
-  },
+  toggle: (id) =>
+    dispatch(toggle(id)),
 }))
 
 export default class TodoItem extends Component {
@@ -43,11 +42,11 @@ export default class TodoItem extends Component {
   }
 
   render() {
-    const {item} = this.props;
+    const {item, selectedIds} = this.props;
     return (
       <View className='item-container'>
         <View className='block'>
-          <Switch type="checkbox" onChange={() => this.handleCheckBoxClick(item._id)}/>
+          <Switch type="checkbox" checked={selectedIds.includes(item._id)} onChange={() => this.handleCheckBoxClick(item._id)}/>
           <View className='content'>
             <View>{item.title}:</View>
             <View className='detail'>{item.detail}</View>
