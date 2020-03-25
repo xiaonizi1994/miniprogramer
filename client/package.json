@@ -5,7 +5,6 @@
   "description": "todolist",
   "templateInfo": {
     "name": "wxcloud",
-    "typescript": true,
     "css": "sass"
   },
   "scripts": {

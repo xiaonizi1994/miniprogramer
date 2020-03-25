@@ -2,7 +2,22 @@ import Taro, {Component} from "@tarojs/taro"
 import {AtList, AtListItem} from "taro-ui";
 import TodoItem from "../todoItem/TodoItem";
 import {ScrollView} from "@tarojs/components";
+import {connect} from "@tarojs/redux";
+import {add, getAll, update} from "../../store/actions/todoList";
 
+@connect(({ todoList }) => ({
+  todoList
+}), (dispatch) => ({
+  add (item) {
+    dispatch(add(item))
+  },
+  getAll () {
+    dispatch(getAll())
+  },
+  update (item) {
+    dispatch(update(item))
+  }
+}))
 
 export default class TodoList extends Component {
   static defaultProps = {
