@@ -1,0 +1,23 @@
+.item-container {
+  padding: 24rpx;
+  border-bottom: 1PX solid #d6e4ef;
+  color: #333;
+  font-size: 32rpx;
+  line-height: 1.5;
+  display: flex;
+  justify-content: space-between;
+}
+
+.block{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.content{
+  display: flex;
+}
+.detail{
+  color: #333333;
+}
+

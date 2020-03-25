@@ -1,5 +1,5 @@
 import Taro, {Component, Config} from '@tarojs/taro'
-import {View} from '@tarojs/components'
+import {Button, ScrollView, View} from '@tarojs/components'
 import './index.scss'
 import TodoList from "../../components/todoList/todoList";
 import CreateInput from "../../components/createInput/createInput";
@@ -63,6 +63,10 @@ export default class Index extends Component {
         <CreateInput/>
         <TodoList todoList={todoList}/>
         <CreateModal confirmClick={this.fetchTodoList}/>
+        <View className='btn-group'>
+          <Button className='btn' type='primary'>完成</Button>
+          <Button className='btn' type='warn'>删除</Button>
+        </View>
       </View>
     )
   }
