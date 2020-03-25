@@ -1,5 +1,5 @@
 import Taro, {Component} from "@tarojs/taro"
-import {AtList, AtListItem} from "taro-ui";
+import {AtList} from "taro-ui";
 import TodoItem from "../todoItem/TodoItem";
 import {ScrollView} from "@tarojs/components";
 import {connect} from "@tarojs/redux";
@@ -12,8 +12,8 @@ import {dbMethodName} from "../../utils/dbMethodName";
   add (item) {
     dispatch(add(item))
   },
-  fetchAll (items) {
-    dispatch(fetchAll(items))
+  fetchAll () {
+    dispatch(fetchAll())
   },
   update (item) {
     dispatch(update(item))
@@ -26,7 +26,7 @@ export default class TodoList extends Component {
   }
 
   componentDidMount() {
-    this.fetchTodoList();
+    this.props.fetchAll();
   }
 
   componentWillUnmount() {
@@ -38,19 +38,6 @@ export default class TodoList extends Component {
   componentDidHide() {
   }
 
-  fetchTodoList = () => {
-    Taro.cloud
-      .callFunction({
-        name: 'todoList',
-        data: {
-          funcName: dbMethodName.getItemsById,
-        }
-      })
-      .then(res => {
-        this.props.fetchAll(res.result.data)
-      })
-  }
-
   render() {
     const {todoList} = this.props;
     const scrollStyle = {
@@ -60,9 +47,6 @@ export default class TodoList extends Component {
     return (
       <ScrollView style={scrollStyle} scrollY>
         <AtList>
-          {todoList && todoList.map(item => (
-            <AtListItem title={item.title} extraText="查看详情" arrow='right' isSwitch/>
-          ))}
           {todoList && todoList.map(item => (
             <TodoItem item={item}/>
           ))}

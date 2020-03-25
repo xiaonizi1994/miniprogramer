@@ -1,4 +1,6 @@
 import {ADD, DEL, FETCH_ALL, UPDATE} from "../constants";
+import Taro from "@tarojs/taro";
+import {dbMethodName} from "../../utils/dbMethodName";
 
 export const add = item => {
   return {
@@ -7,7 +9,7 @@ export const add = item => {
   }
 }
 
-export const fetchAll = (items) => {
+export const receiveAll = (items) => {
   return {
     type: FETCH_ALL,
     todoList: items
@@ -27,3 +29,17 @@ export const delItem = (item) => {
     item,
   }
 }
+
+export const fetchAll = () => {
+  return (dispatch)=>Taro.cloud
+    .callFunction({
+      name: 'todoList',
+      data: {
+        funcName: dbMethodName.getItemsById,
+      }
+    })
+    .then(res => {
+      return res.result.data;
+    })
+    .then(data=>dispatch(receiveAll(data)))
+};

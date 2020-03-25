@@ -9,7 +9,6 @@ export default function todoList(state = INITIAL_STATE, action) {
       return state;
     }
     case FETCH_ALL: {
-      console.log('actio', action);
       return action.todoList;
     }
     case UPDATE:
@@ -30,3 +29,4 @@ export default function todoList(state = INITIAL_STATE, action) {
       return state
   }
 }
+
