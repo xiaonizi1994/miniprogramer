@@ -3,7 +3,17 @@ import {Button} from "@tarojs/components"
 import {AtModal, AtModalAction, AtModalContent, AtModalHeader, AtTextarea} from "taro-ui";
 import {dbMethodName} from "../../utils/dbMethodName";
 import {emitter, EVENT_TYPE} from '../../utils/events';
+import {connect} from "@tarojs/redux";
+import {add, fetchAll, update} from "../../store/actions/todoList";
 
+
+@connect(({ todoList }) => ({
+  todoList
+}), (dispatch) => ({
+  fetchAll () {
+    dispatch(fetchAll())
+  },
+}))
 export default class CreateModal extends Component {
 
   eventEmitter;
@@ -66,9 +76,8 @@ export default class CreateModal extends Component {
         }
       })
       .then(res => {
-        confirmClick();
         this.cleanForm();
-        console.log('res', res)
+        this.props.fetchAll();
       });
     this.setState({
       isOpened: false

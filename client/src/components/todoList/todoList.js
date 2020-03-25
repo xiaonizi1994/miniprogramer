@@ -4,7 +4,6 @@ import TodoItem from "../todoItem/TodoItem";
 import {ScrollView} from "@tarojs/components";
 import {connect} from "@tarojs/redux";
 import {add, fetchAll, update} from "../../store/actions/todoList";
-import {dbMethodName} from "../../utils/dbMethodName";
 
 @connect(({ todoList }) => ({
   todoList
