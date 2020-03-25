@@ -25,6 +25,6 @@ const toggle = (state, id) => {
   } else {
     state.push(id);
   }
-  return state;
+  return [...state];
 }
 

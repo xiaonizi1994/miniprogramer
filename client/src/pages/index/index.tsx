@@ -6,7 +6,7 @@ import CreateInput from "../../components/createInput/createInput";
 import CreateModal from "../../components/createModal/createModal";
 import {dbMethodName} from "../../utils/dbMethodName";
 import {connect} from "@tarojs/redux";
-import {clean} from "../../store/actions/selectList";
+import {clean} from "../../store/actions/selectIds";
 import {fetchAll} from "../../store/actions/todoList";
 
 @connect(({ selectedIds }) => ({

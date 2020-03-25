@@ -45,7 +45,7 @@ export default class TodoList extends Component {
       <ScrollView className='scroller' scrollY>
         <AtList>
           {todoList && todoList.map(item => (
-            <TodoItem checked={selectedIds.includes(item._id)} item={item}/>
+            <TodoItem item={item}/>
           ))}
         </AtList>
       </ScrollView>
