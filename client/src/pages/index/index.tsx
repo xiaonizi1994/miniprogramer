@@ -57,7 +57,6 @@ export default class Index extends Component {
   }
 
   handleDelClick = () => {
-
   }
 
   render() {

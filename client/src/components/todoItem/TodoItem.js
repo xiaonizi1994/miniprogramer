@@ -3,6 +3,16 @@ import {Switch, View} from "@tarojs/components";
 
 import './TodoItem.scss'
 import {AtIcon} from "taro-ui";
+import {connect} from "@tarojs/redux";
+import {toggle} from "../../store/actions/selectList";
+
+@connect(({selectedIds}) => ({
+  selectedIds
+}), (dispatch) => ({
+  toggle(id) {
+    dispatch(toggle(id))
+  },
+}))
 
 export default class TodoItem extends Component {
   static defaultProps = {
@@ -24,12 +34,16 @@ export default class TodoItem extends Component {
   componentDidHide() {
   }
 
+  handleCheckBoxClick = (id) => {
+    this.props.toggle(id)
+  }
+
   render() {
     const {item} = this.props;
     return (
       <View className='item-container'>
         <View className='block'>
-          <Switch type="checkbox"/>
+          <Switch type="checkbox" onClick={() => this.handleCheckBoxClick(item._id)}/>
           <View className='content'>
             <View>{item.title}:</View>
             <View className='detail'>detail{item.detail}</View>
