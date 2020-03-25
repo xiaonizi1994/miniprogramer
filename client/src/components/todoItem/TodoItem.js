@@ -6,7 +6,7 @@ import {AtIcon} from "taro-ui";
 import {connect} from "@tarojs/redux";
 import {toggle} from "../../store/actions/selectIds";
 
-@connect(({ selectedIds }) => ({
+@connect(({selectedIds}) => ({
   selectedIds,
 }), (dispatch) => ({
   toggle(id) {
@@ -38,19 +38,24 @@ export default class TodoItem extends Component {
     this.props.toggle(id)
   };
 
+  getStatus = (item) => {
+    return item.done ? '已完成' : '未完成'
+  }
+
   render() {
     const {item} = this.props;
     return (
       <View className='item-container'>
         <View className='block'>
-          <Switch type="checkbox"  onChange={() => this.handleCheckBoxClick(item._id)}/>
+          <Switch type="checkbox" onChange={() => this.handleCheckBoxClick(item._id)}/>
           <View className='content'>
             <View>{item.title}:</View>
-            <View className='detail'>detail{item.detail}</View>
+            <View className='detail'>{item.detail}</View>
           </View>
         </View>
         <View className='block'>
-          <View className='detail'>查看详情</View>
+          <View>{this.getStatus(item)}</View>
+          <Switch className='switch' checked={item.done}/>
           <AtIcon value='chevron-right' size='25' color='#ccc'></AtIcon>
         </View>
       </View>

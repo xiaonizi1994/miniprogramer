@@ -48,6 +48,22 @@ export default class Index extends Component {
   componentDidHide() {
   }
 
+  handleFinishClick = ()=>{
+    const {selectedIds, cleanSelectedIds, fetchAll} = this.props;
+    Taro.cloud
+      .callFunction({
+        name: 'todoList',
+        data: {
+          funcName: dbMethodName.batchFinish,
+          args: selectedIds
+        }
+      })
+      .then(() => {
+        cleanSelectedIds();
+        fetchAll();
+      })
+  }
+
   handleDelClick = () => {
     const {selectedIds, cleanSelectedIds, fetchAll} = this.props;
     Taro.cloud
@@ -58,10 +74,9 @@ export default class Index extends Component {
           args: selectedIds
         }
       })
-      .then(res => {
+      .then(() => {
         cleanSelectedIds();
         fetchAll();
-        console.log('res', res);
       })
   }
 
@@ -72,7 +87,7 @@ export default class Index extends Component {
         <TodoList/>
         <CreateModal/>
         <View className='btn-group'>
-          <Button className='btn' type='primary'>完成</Button>
+          <Button className='btn' type='primary' onClick={this.handleFinishClick}>完成</Button>
           <Button className='btn' type='warn' onClick={this.handleDelClick}>删除</Button>
         </View>
       </View>
