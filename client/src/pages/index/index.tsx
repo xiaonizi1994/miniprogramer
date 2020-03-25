@@ -56,6 +56,10 @@ export default class Index extends Component {
       })
   }
 
+  handleDelClick = () => {
+
+  }
+
   render() {
     const {todoList} = this.state;
     return (
@@ -65,7 +69,7 @@ export default class Index extends Component {
         <CreateModal confirmClick={this.fetchTodoList}/>
         <View className='btn-group'>
           <Button className='btn' type='primary'>完成</Button>
-          <Button className='btn' type='warn'>删除</Button>
+          <Button className='btn' type='warn' onClick={this.handleDelClick}>删除</Button>
         </View>
       </View>
     )
