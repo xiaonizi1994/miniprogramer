@@ -1,4 +1,5 @@
 export const dbMethodName = {
   getItemsById: 'getItemsById',
-  addItem: 'addItem'
+  addItem: 'addItem',
+  batchDelete: 'batchDelete',
 }

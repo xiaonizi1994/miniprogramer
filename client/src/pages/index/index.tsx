@@ -1,11 +1,24 @@
 import Taro, {Component, Config} from '@tarojs/taro'
-import {Button, ScrollView, View} from '@tarojs/components'
+import {Button, View} from '@tarojs/components'
 import './index.scss'
 import TodoList from "../../components/todoList/todoList";
 import CreateInput from "../../components/createInput/createInput";
 import CreateModal from "../../components/createModal/createModal";
 import {dbMethodName} from "../../utils/dbMethodName";
+import {connect} from "@tarojs/redux";
+import {clean} from "../../store/actions/selectList";
+import {fetchAll} from "../../store/actions/todoList";
 
+@connect(({ selectedIds }) => ({
+  selectedIds,
+}), (dispatch) => ({
+  cleanSelectedIds() {
+    dispatch(clean())
+  }
+  fetchAll() {
+    dispatch(fetchAll())
+  }
+}))
 
 export default class Index extends Component {
 
@@ -20,15 +33,10 @@ export default class Index extends Component {
     navigationBarTitleText: '首页'
   };
 
-  state = {
-    todoList: []
-  }
-
   componentWillMount() {
   }
 
   componentDidMount() {
-    this.fetchTodoList();
   }
 
   componentWillUnmount() {
@@ -40,23 +48,21 @@ export default class Index extends Component {
   componentDidHide() {
   }
 
-  fetchTodoList = () => {
+  handleDelClick = () => {
+    const {selectedIds, cleanSelectedIds, fetchAll} = this.props;
     Taro.cloud
       .callFunction({
         name: 'todoList',
         data: {
-          funcName: dbMethodName.getItemsById,
+          funcName: dbMethodName.batchDelete,
+          args: selectedIds
         }
       })
       .then(res => {
-        this.setState({
-          todoList: res.result.data,
-        })
+        cleanSelectedIds();
+        fetchAll();
         console.log('res', res);
       })
-  }
-
-  handleDelClick = () => {
   }
 
   render() {

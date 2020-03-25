@@ -4,17 +4,19 @@ import TodoItem from "../todoItem/TodoItem";
 import {ScrollView} from "@tarojs/components";
 import {connect} from "@tarojs/redux";
 import {add, fetchAll, update} from "../../store/actions/todoList";
+import './TodoList.scss'
 
-@connect(({ todoList }) => ({
-  todoList
+@connect(({todoList, selectedIds}) => ({
+  todoList,
+  selectedIds
 }), (dispatch) => ({
-  add (item) {
+  add(item) {
     dispatch(add(item))
   },
-  fetchAll () {
+  fetchAll() {
     dispatch(fetchAll())
   },
-  update (item) {
+  update(item) {
     dispatch(update(item))
   }
 }))
@@ -38,16 +40,12 @@ export default class TodoList extends Component {
   }
 
   render() {
-    const {todoList} = this.props;
-    const scrollStyle = {
-      height: '370px',
-      borderBottom: '1px solid #d6e4ef'
-    }
+    const {todoList, selectedIds} = this.props;
     return (
-      <ScrollView style={scrollStyle} scrollY>
+      <ScrollView className='scroller' scrollY>
         <AtList>
           {todoList && todoList.map(item => (
-            <TodoItem item={item}/>
+            <TodoItem checked={selectedIds.includes(item._id)} item={item}/>
           ))}
         </AtList>
       </ScrollView>

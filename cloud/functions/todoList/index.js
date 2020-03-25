@@ -18,6 +18,7 @@ exports.main = async (data, context) => {
 const funcMap = {
     ['getItemsById']: getItemsByUserId,
     ['addItem']: addItem,
+    ['batchDelete']: batchDelete,
 }
 
 function getItemsByUserId(args, wxContext) {
@@ -44,4 +45,20 @@ function addItem(args, wxContext) {
         })
         .then(res => res)
         .catch(res => res)
+}
+
+function batchDelete(args, wxContext) {
+    const log = cloud.logger()
+    log.info({
+        name: 'dlelt',
+        id: args,
+    })
+    const _ = db.command;
+    return todoItemsDB.where({
+        openId: wxContext.OPENID,
+        _id: _.in(args)
+    }).remove()
+        .then(res => res)
+        .catch(res => res)
+
 }

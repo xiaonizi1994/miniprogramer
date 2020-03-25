@@ -6,8 +6,8 @@ import {AtIcon} from "taro-ui";
 import {connect} from "@tarojs/redux";
 import {toggle} from "../../store/actions/selectList";
 
-@connect(({selectedIds}) => ({
-  selectedIds
+@connect(({ selectedIds }) => ({
+  selectedIds,
 }), (dispatch) => ({
   toggle(id) {
     dispatch(toggle(id))
@@ -16,7 +16,8 @@ import {toggle} from "../../store/actions/selectList";
 
 export default class TodoItem extends Component {
   static defaultProps = {
-    item: {}
+    item: {},
+    checked: false,
   }
 
   componentWillMount() {
@@ -36,14 +37,15 @@ export default class TodoItem extends Component {
 
   handleCheckBoxClick = (id) => {
     this.props.toggle(id)
-  }
+  };
 
   render() {
-    const {item} = this.props;
+    const {item, checked} = this.props;
+    console.log('checke', checked);
     return (
       <View className='item-container'>
         <View className='block'>
-          <Switch type="checkbox" onClick={() => this.handleCheckBoxClick(item._id)}/>
+          <Switch type="checkbox" checked={false} onClick={() => this.handleCheckBoxClick(item._id)}/>
           <View className='content'>
             <View>{item.title}:</View>
             <View className='detail'>detail{item.detail}</View>

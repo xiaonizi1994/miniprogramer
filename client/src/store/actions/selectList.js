@@ -1,4 +1,4 @@
-import {TOGGLE} from "../constants";
+import {CLEAN, TOGGLE} from "../constants";
 
 export const toggle = id => {
   return {
@@ -6,4 +6,11 @@ export const toggle = id => {
     id,
   }
 }
+
+export const clean = () => {
+  return {
+    type: CLEAN,
+  }
+}
+
 
