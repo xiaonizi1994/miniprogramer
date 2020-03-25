@@ -1,4 +1,4 @@
-import {ADD, DEL, GET_ALL, UPDATE} from "../constants";
+import {ADD, DEL, FETCH_ALL, UPDATE} from "../constants";
 
 const INITIAL_STATE = []
 
@@ -8,8 +8,10 @@ export default function todoList(state = INITIAL_STATE, action) {
       state.push(item);
       return state;
     }
-    case GET_ALL:
-      return state;
+    case FETCH_ALL: {
+      console.log('actio', action);
+      return action.todoList;
+    }
     case UPDATE:
       return [
         ...state,

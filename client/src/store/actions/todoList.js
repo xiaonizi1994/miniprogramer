@@ -1,4 +1,4 @@
-import {ADD, DEL, GET_ALL, UPDATE} from "../constants";
+import {ADD, DEL, FETCH_ALL, UPDATE} from "../constants";
 
 export const add = item => {
   return {
@@ -7,9 +7,10 @@ export const add = item => {
   }
 }
 
-export const getAll = () => {
+export const fetchAll = (items) => {
   return {
-    type: GET_ALL,
+    type: FETCH_ALL,
+    todoList: items
   }
 }
 
